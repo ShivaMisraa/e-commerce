@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 
 export const CartContext = createContext();
 
-const CartContextProvider = (props) => {
+const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (item) => {
@@ -34,4 +34,4 @@ const CartContextProvider = (props) => {
   );
 };
 
-export default CartContextProvider;
+export default CartProvider;

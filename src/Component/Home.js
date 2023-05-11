@@ -45,18 +45,10 @@ const Home = () => {
 
   return (
     <>
-      
       <Container>
         <Row className="justify-content-center">{ItemsList}</Row>
       </Container>
-      <Container fluid className="mt-1 shadow bg-secondary text-center">
-        <Row>
-          <Col>
-            <h1 className="justify-content-content">The Generics</h1>
-          </Col>
-        </Row>
-      </Container>
-    </>
+       </>
   );
 };
 

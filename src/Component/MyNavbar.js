@@ -3,6 +3,7 @@ import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import Cart from "./Cart";
 import { CartContext } from "./CartContext";
 
+
 const MyNavbar = () => {
   const [showCart, setShowCart] = useState(false);
   const { cartItems } = useContext(CartContext);
@@ -23,17 +24,16 @@ const MyNavbar = () => {
         variant="dark"
         expand="sm"
         style={{ color: "white" }}
-       
       >
         <Container>
           <Nav className="mt-1 shadow justify-content-center align-items-center ">
-            <Nav.Link href="#home" className="mt-2">
+            <Nav.Link  href="/Home" className="mt-auto" >
               Home
             </Nav.Link>
-            <Nav.Link href="#features" className="mt-2">
-              Features
+            <Nav.Link  href="/" className="mt-auto" >
+              Store
             </Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link  href="/About" className="mt-auto" >About</Nav.Link>
           </Nav>
           <Nav className="justify-content-end">
             <Button onClick={handleCartClick}>
