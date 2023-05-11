@@ -1,31 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { CartContext } from "./CartContext";
 
 const Cart = ({ show, handleClose }) => {
-  const cartItems = [
-    {
-      title: "Colors",
-      price: 100,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-      quantity: 2,
-    },
-    {
-      title: "Black and white Colors",
-      price: 50,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-      quantity: 3,
-    },
-    {
-      title: "Yellow and Black Colors",
-      price: 70,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-      quantity: 1,
-    },
-  ];
+  const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
 
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -33,43 +12,72 @@ const Cart = ({ show, handleClose }) => {
   );
 
   const cartElements = cartItems.map((item) => (
-    <div key={item.title}>
-      <h5>Item</h5>
-      <div style={{ display: "flex", alignItems: "center" }}>
+    <div
+      key={item.title}
+      style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}
+    >
+      <div style={{ marginRight: "1rem" }}>
         <img src={item.imageUrl} alt={item.title} width="50" height="50" />
-        <span style={{ marginLeft: "1rem" }}>{item.title}</span>
       </div>
-      <h5>Price</h5>
-      <div>{item.price}</div>
-      <h5>Quantity</h5>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <span style={{ marginRight: "1rem" }}>{item.quantity}</span>
-        <Button variant="danger" size="sm">Remove</Button>
+      <div style={{ flex: 1 }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <h5 style={{ margin: 0, marginRight: "1rem" }}>Item:</h5>
+          <span>{item.title}</span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <h5 style={{ margin: 0, marginRight: "1rem" }}>Price:</h5>
+          <span>{item.price.toFixed(2)} USD</span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <h5 style={{ margin: 0, marginRight: "1rem" }}>Quantity:</h5>
+          <span>{item.quantity}</span>
+        </div>
+        <Button variant="danger" onClick={() => removeFromCart(item)}>
+          Remove
+        </Button>
       </div>
-      <hr />
     </div>
   ));
 
   return (
-    <>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Shopping Cart</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {cartElements}
-          <div>Total: {totalPrice}</div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={() => alert("Purchased!")}>
-            Purchase
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Cart</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {cartItems.length === 0 ? (
+          <p>Your cart is empty.</p>
+        ) : (
+          <div>
+            {cartElements}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: "1rem",
+                borderTop: "1px solid #ccc",
+                paddingTop: "1rem",
+              }}
+            >
+              <h5 style={{ margin: 0 }}>Total:</h5>
+              <span>{totalPrice.toFixed(2)} USD</span>
+            </div>
+            <div style={{ marginTop: "1rem" }}>
+              <Button variant="danger" onClick={clearCart}>
+                Clear Cart
+              </Button>
+              <Button
+                variant="success"
+                style={{ marginLeft: "1rem" }}
+                onClick={handleClose}
+              >
+                Checkout
+              </Button>
+            </div>
+          </div>
+        )}
+      </Modal.Body>
+    </Modal>
   );
 };
 

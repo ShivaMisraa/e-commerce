@@ -1,13 +1,6 @@
-import React,{useState} from "react";
+import React, { useContext } from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
-import {
-  faYoutube,
-  faSpotify,
-  faFacebook,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-
+import { CartContext } from "./CartContext";
 
 const DUMMY_ITEMS = [
   {
@@ -33,6 +26,8 @@ const DUMMY_ITEMS = [
 ];
 
 const Home = () => {
+  const { addToCart } = useContext(CartContext);
+
   const ItemsList = DUMMY_ITEMS.map((item) => (
     <Col key={item.title} xs={12} md={6} className=" my-3 ">
       <Card style={{ width: "55%" }}>
@@ -40,17 +35,20 @@ const Home = () => {
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
           <Card.Text>$ {item.price}</Card.Text>
-          <Button type="submit"  >Add to Cart</Button>
+          <Button type="button" onClick={() => addToCart(item)}>
+            Add to Cart
+          </Button>
         </Card.Body>
       </Card>
     </Col>
   ));
 
-  
-
-
   return (
     <>
+      
+      <Container>
+        <Row className="justify-content-center">{ItemsList}</Row>
+      </Container>
       <Container fluid className="mt-1 shadow bg-secondary text-center">
         <Row>
           <Col>
@@ -58,30 +56,8 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Container>
-        <Row className="justify-content-center">{ItemsList}</Row>
-      </Container>
-      <Container className="mt-3 text-center">
-        <Button className="mx-auto d-block">See the Cart</Button>
-      </Container>
-
-      <Container fluid className="mt-2">
-        <footer className="bg-secondary text-white">
-          <Container>
-            <Row className="justify-content-between">
-              <Col>
-                <h1>The Generics</h1>
-              </Col>
-              <Col className="d-flex justify-content-end mt-2">
-                <FontAwesomeIcon icon={faYoutube} className="mx-3" size="2x" />
-                <FontAwesomeIcon icon={faSpotify} className="mx-3" size="2x" />
-                <FontAwesomeIcon icon={faFacebook} className="mx-3" size="2x" />
-              </Col>
-            </Row>
-          </Container>
-        </footer>
-      </Container>
     </>
   );
 };
+
 export default Home;
