@@ -6,7 +6,7 @@ import React from "react";
 function Footer() {
   return (
     <>
-      <footer className="mt-1 shadow bg-dark text-center text-neon-blue py-3 m-auto">
+      <footer className="mt-1 shadow bg-dark text-center text-neon-blue py-3 m-aut">
         <div>
           <Row className="mt-3">
             <Col xs={12} md={4} className="mb-2 mb-md-0">

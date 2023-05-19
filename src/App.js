@@ -6,19 +6,26 @@ import Home from "./Component/Home";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AboutPage from "./Route/About";
 import Footer from "./Component/Footer";
+import HomePage from "./Route/HomePage";
+import ContactUs from "./Route/ContactUs";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/About", element: <AboutPage /> },
+  { path: "/Home", element: <HomePage /> },
+  { path: "/ContactUs", element: <ContactUs /> },
+  
+
 ]);
 
 function App() {
   return (
     <CartProvider>
         <MyNavbar />
+        <Cart />
       <RouterProvider router={router}>
         <Home />
-        <Cart />
+        <HomePage/>
       </RouterProvider>
         <Footer/>
     </CartProvider>

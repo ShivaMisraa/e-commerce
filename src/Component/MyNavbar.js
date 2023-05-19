@@ -19,21 +19,13 @@ const MyNavbar = () => {
 
   return (
     <div>
-      <Navbar
-        bg="dark"
-        variant="dark"
-        expand="sm"
-        style={{ color: "white" }}
-      >
+      <Navbar bg="dark" variant="dark" expand="sm">
         <Container>
-          <Nav className="mt-1 shadow justify-content-center align-items-center ">
-            <Nav.Link  href="/Home" className="mt-auto" >
-              Home
-            </Nav.Link>
-            <Nav.Link  href="/" className="mt-auto" >
-              Store
-            </Nav.Link>
-            <Nav.Link  href="/About" className="mt-auto" >About</Nav.Link>
+          <Nav className="mx-auto m-2">
+            <Nav.Link href="/Home" style={{color: 'white'}}>Home</Nav.Link>
+            <Nav.Link href="/" style={{color: 'white'}}>Store</Nav.Link>
+            <Nav.Link href="/About" style={{color: 'white'}}>About</Nav.Link>
+            <Nav.Link href="/ContactUs" style={{color: 'white'}}>Contact Us</Nav.Link>
           </Nav>
           <Nav className="justify-content-end">
             <Button onClick={handleCartClick}>
