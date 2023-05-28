@@ -1,9 +1,8 @@
 import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
-import {  Row, Col } from "react-bootstrap";
-
+import { Row, Col } from "react-bootstrap";
 import React from "react";
 
-function Footer() {
+const Footer = () => {
   return (
     <>
       <footer className="mt-1 shadow bg-dark text-center text-neon-blue py-3 m-aut">
@@ -33,6 +32,6 @@ function Footer() {
       </footer>
     </>
   );
-}
+};
 
 export default Footer;

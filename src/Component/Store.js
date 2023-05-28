@@ -1,39 +1,23 @@
 import React, { useContext } from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { CartContext } from "./CartContext";
+import { Link, Route, Routes } from "react-router-dom";
+import ProductsDetails from "../Products/ProductsDetails";
+import DUMMY_ITEMS from "./DummyItems";
 
-const DUMMY_ITEMS = [
-  {
-    title: "Colors",
-    price: 110,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-  },
-  {
-    title: "Black and white Colors",
-    price: 50,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-  },
-  {
-    title: "Yellow and Black Colors",
-    price: 70,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-  },
-  {
-    title: "Blue Color",
-    price: 100,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
-  },
-];
 
-const Home = () => {
+
+const Store = () => {
   const { addToCart } = useContext(CartContext);
 
   const ItemsList = DUMMY_ITEMS.map((item) => (
     <Col key={item.title} xs={12} md={6} className=" my-3 ">
-      <Card  className="m-auto" style={{ width: "55%" }}>
+      <Card className="m-auto" style={{ width: "55%" }}>
         <Card.Img variant="top" src={item.imageUrl} />
         <Card.Body>
-          <Card.Title>{item.title}</Card.Title>
+          <Link to={`/products/${item.id}`}>
+            <Card.Title>{item.title}</Card.Title>
+          </Link>
           <Card.Text>$ {item.price}</Card.Text>
           <Button type="button" onClick={() => addToCart(item)}>
             Add to Cart
@@ -46,8 +30,11 @@ const Home = () => {
   return (
     <Container fluid className="bg-gradient p-5 d-flex justify-content-center">
       <Row className="justify-content-center">{ItemsList}</Row>
+      <Routes>
+        <Route path="/products/:productId" element={<ProductsDetails items={DUMMY_ITEMS} />} />
+      </Routes>
     </Container>
   );
 };
 
-export default Home;
+export default Store;
