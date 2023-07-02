@@ -18,7 +18,7 @@ const ContactUs = () => {
     };
     console.log(userData);
 
-    const response = await fetch("https://e-commerce-app-aab62-default-rtdb.firebaseio.com/usercontactdetails.json", {
+    const response = await fetch("https://sample-e-com-46695-default-rtdb.firebaseio.com//usercontactdetails.json", {
       method: "POST",
       body: JSON.stringify(userData),
       headers: {

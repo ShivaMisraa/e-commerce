@@ -26,6 +26,7 @@ const MyNavbar = () => {
             <Nav.Link href="/" style={{color: 'white'}}>Store</Nav.Link>
             <Nav.Link href="/About" style={{color: 'white'}}>About</Nav.Link>
             <Nav.Link href="/ContactUs" style={{color: 'white'}}>Contact Us</Nav.Link>
+            <Nav.Link href="/Login" style={{color: 'white'}}>Login </Nav.Link>
           </Nav>
           <Nav className="justify-content-end">
             <Button onClick={handleCartClick}>

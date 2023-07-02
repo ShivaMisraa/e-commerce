@@ -9,6 +9,8 @@ import HomePage from "./Route/HomePage";
 import ContactUs from "./Route/ContactUs";
 import ProductsDetails from "./Products/ProductsDetails";
 import Store from "./Component/Store";
+import Login from "./Auth/Login";
+import TokenProvider from "./Auth/TokenProvider";
 
 const router = createBrowserRouter([
   { path: "*", element: <Store /> },
@@ -16,19 +18,23 @@ const router = createBrowserRouter([
   { path: "/Home", element: <HomePage /> },
   { path: "/products/:productId", element: <ProductsDetails /> },
   { path: "/ContactUs", element: <ContactUs /> },
+  { path: "/Login", element: <Login /> },
 ]);
 
 function App() {
   return (
-    <CartProvider>
-      <MyNavbar />
-      <Cart />
-      <RouterProvider router={router}>
-        <Store/>
-        <HomePage />
-      </RouterProvider>
-      <Footer />
-    </CartProvider>
+    <TokenProvider>
+      <CartProvider>
+        <MyNavbar />
+        <Cart />
+        <RouterProvider router={router}>
+          <Store />
+          <HomePage />
+          <Login />
+        </RouterProvider>
+        <Footer />
+      </CartProvider>
+    </TokenProvider>
   );
 }
 
