@@ -19,18 +19,19 @@ const router = createBrowserRouter([
   { path: "/products/:productId", element: <ProductsDetails /> },
   { path: "/ContactUs", element: <ContactUs /> },
   { path: "/Login", element: <Login /> },
+
+
 ]);
 
 function App() {
+  console.log(TokenProvider)
   return (
-    <TokenProvider>
+    <TokenProvider >
       <CartProvider>
         <MyNavbar />
         <Cart />
         <RouterProvider router={router}>
-          <Store />
           <HomePage />
-          <Login />
         </RouterProvider>
         <Footer />
       </CartProvider>

@@ -62,7 +62,6 @@ const Login = () => {
       })
       .then((data) => {
         console.log(data)
-        // navigate.replace("/store")
         navigate("/store", { replace: true });
         // authCtx.login(data.idToken);
       })
