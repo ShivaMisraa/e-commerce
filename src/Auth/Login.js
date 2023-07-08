@@ -1,21 +1,16 @@
 import React, { useRef, useState, useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import  TokenContext  from "./TokenProvider";
+import TokenContext from "./TokenProvider";
 import { useNavigate } from "react-router-dom";
 
-
-
-
 const Login = () => {
-
   const authCtx = useContext(TokenContext);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -48,11 +43,10 @@ const Login = () => {
       },
     })
       .then((res) => {
-        console.log("hii")
+        console.log("hii");
         setIsLoading(false);
         if (res.ok) {
           return res.json();
-
         } else {
           return res.json().then((data) => {
             let errorMessage = "Authentication failed!";
@@ -61,7 +55,7 @@ const Login = () => {
         }
       })
       .then((data) => {
-        console.log(data)
+        console.log(data);
         navigate("/store", { replace: true });
         // authCtx.login(data.idToken);
       })
@@ -78,6 +72,9 @@ const Login = () => {
         margin: "20px auto",
       }}
     >
+      <Container>
+        <p>To access Store please login</p>
+      </Container>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="email">
           <Form.Label>Email Id</Form.Label>

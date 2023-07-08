@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-const TokenContext = createContext({
+export const TokenContext = createContext({
   token: " ",
   isLoggedIn: false,
   login: (token) => {},

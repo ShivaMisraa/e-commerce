@@ -13,12 +13,13 @@ import Login from "./Auth/Login";
 import TokenProvider from "./Auth/TokenProvider";
 
 const router = createBrowserRouter([
-  { path: "*", element: <Store /> },
+  { path: "*", element: <Login /> },
   { path: "/About", element: <AboutPage /> },
+  { path: "/Store", element: <Store /> },
   { path: "/Home", element: <HomePage /> },
   { path: "/products/:productId", element: <ProductsDetails /> },
   { path: "/ContactUs", element: <ContactUs /> },
-  { path: "/Login", element: <Login /> },
+  // { path: "/Login", element: <Login /> },
 
 
 ]);

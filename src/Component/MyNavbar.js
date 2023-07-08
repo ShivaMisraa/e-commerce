@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import Cart from "./Cart";
 import { CartContext } from "./CartContext";
-import TokenContext from "../Auth/TokenProvider"
+import {TokenContext} from "../Auth/TokenProvider"
 
 
 const MyNavbar = () => {
